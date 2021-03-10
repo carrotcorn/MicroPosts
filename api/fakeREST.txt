@@ -1,0 +1,5 @@
+this folder holds a placeholder utilizing the depenancy json-server. this allows for testing front end with a fake backend with a locally provided JSON file.
+
+to run, $npm run json:server
+
+this command is specified under "scripts" in the package.json
