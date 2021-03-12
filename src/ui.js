@@ -33,17 +33,17 @@ class UI {
 
   showAlert(msg, className) {
     this.clearAlert();
-    //create Div
+    // Create div
     const div = document.createElement("div");
-    //add classes
+    // Add classes
     div.className = className;
-    // add text
+    // Add text
     div.appendChild(document.createTextNode(msg));
-    // get parent
-    const container = document.querySelector(".postscontainer");
-    //get posts
+    // Get parent
+    const container = document.querySelector(".postsContainer");
+    // Get posts
     const posts = document.querySelector("#posts");
-    //insert alert div
+    // Insert alert div
     container.insertBefore(div, posts);
 
     //timeout
