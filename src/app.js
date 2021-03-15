@@ -4,6 +4,8 @@ import ui from "./ui";
 document.addEventListener("DOMContentLoaded", getPosts);
 //listen for submit post
 document.querySelector(".post-submit").addEventListener("click", submitPost);
+// Listen for edit State
+document.querySelector("#posts").addEventListener("click", enableEdit);
 // listen for Delete
 document.querySelector("#posts").addEventListener("click", deletePost);
 
@@ -37,6 +39,7 @@ function submitPost() {
     })
     .catch((err) => console.log(err));
 }
+
 // Delete Post
 function deletePost(e) {
   if (e.target.parentElement.classList.contains("delete")) {
@@ -52,5 +55,24 @@ function deletePost(e) {
     }
   }
 
+  e.preventDefault();
+}
+// Enable edit state
+function enableEdit(e) {
+  //console.log(e.target); //use this to find the target element when clicking the button.
+
+  if (e.target.parentElement.classList.contains("edit")) {
+    const id = e.target.parentElement.dataset.id;
+    const title =
+      e.target.parentElement.previousElementSibling.previousElementSibling
+        .textContent;
+    const body = e.target.parentElement.previousElementSibling.textContent;
+    //console.log(e.target.parentElement.dataset.id); // logs post id when click edit
+    // console.log(e.target.parentElement.previousElementSibling.textContent);
+
+    const data = { id, title, body };
+
+    ui.fillForm(data);
+  }
   e.preventDefault();
 }

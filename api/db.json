@@ -1,3 +1,24 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "title": "dca",
+      "body": "cdas",
+      "id": 3
+    },
+    {
+      "title": "fdsafda",
+      "body": "efw",
+      "id": 4
+    },
+    {
+      "title": "42",
+      "body": "faf",
+      "id": 5
+    },
+    {
+      "title": "ty4ge",
+      "body": "fdsav",
+      "id": 6
+    }
+  ]
 }
