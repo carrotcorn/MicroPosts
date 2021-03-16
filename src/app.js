@@ -24,25 +24,42 @@ function getPosts() {
 function submitPost() {
   const title = document.querySelector("#title").value;
   const body = document.querySelector("#body").value;
+  const id = document.querySelector("#id").value;
 
+  //set object literals to the variables above
+  const data = {
+    title,
+    body,
+  };
+
+  //validate input fields
   if (title === "" || body === "") {
     ui.showAlert("Please fill in all fields", "alert alert-danger");
   } else {
-    //set object literals to the variables above
-    const data = {
-      title,
-      body,
-    };
+    // Check for ID
+    if (id === "") {
+      // Create Post
+      http
+        .post("http://localhost:3000/posts", data)
+        .then((data) => {
+          ui.showAlert("Post Added", "alert alert-success");
+          ui.clearFields();
+          getPosts();
+        })
+        .catch((err) => console.log(err));
+    } else {
+      // Update Post
 
-    // Create Post
-    http
-      .post("http://localhost:3000/posts", data)
-      .then((data) => {
-        ui.showAlert("Post Added", "alert alert-success");
-        ui.clearFields();
-        getPosts();
-      })
-      .catch((err) => console.log(err));
+      http
+        .put(`http://localhost:3000/posts/${id}`, data)
+        .then((data) => {
+          ui.showAlert("Post Added", "alert alert-success");
+          ui.changeFormState("add");
+          ui.clearFields();
+          getPosts();
+        })
+        .catch((err) => console.log(err));
+    }
   }
 }
 
