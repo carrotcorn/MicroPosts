@@ -4,10 +4,12 @@ import ui from "./ui";
 document.addEventListener("DOMContentLoaded", getPosts);
 //listen for submit post
 document.querySelector(".post-submit").addEventListener("click", submitPost);
-// Listen for edit State
-document.querySelector("#posts").addEventListener("click", enableEdit);
 // listen for Delete
 document.querySelector("#posts").addEventListener("click", deletePost);
+// Listen for edit State
+document.querySelector("#posts").addEventListener("click", enableEdit);
+// Listen for cancel edit
+document.querySelector(".card-form").addEventListener("click", cancelEdit);
 
 // Get Post
 function getPosts() {
@@ -78,5 +80,14 @@ function enableEdit(e) {
 
     ui.fillForm(data);
   }
+  e.preventDefault();
+}
+
+// cancel Edit State
+function cancelEdit(e) {
+  if (e.target.classList.contains("post-cancel")) {
+    ui.changeFormState("add");
+  }
+
   e.preventDefault();
 }
